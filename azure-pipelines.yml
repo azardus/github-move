@@ -9,10 +9,12 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-16.04'
-  demands:
-    - npm
   # vmImage: 'windows-latest'
   # vmImage: 'ubuntu-latest'
+
+  # La demands section => ci-dessous pool spécifie que nous avons besoin de npm, le gestionnaire de paquets Node.js, installé sur le système de construction.
+  demands:    
+    - npm
 
 variables:
   # solution: '**/*.sln'
@@ -21,8 +23,9 @@ variables:
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetVersion: '3.1.100'
 
-
+# steps section => vous voyez les tâches de génération qui correspondent à chacune des commandes de script que nous avons identifiées précédemment.
 steps:
+  # tâches de génération intégrées
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK $(dotnetVersion)'
   inputs:
@@ -34,12 +37,15 @@ steps:
   inputs:
     verbose: false
 
+  # Pour exécuter des commandes système générales, vous utilisez la tâche CmdLine@2ou script. Le pipeline utilise la scripttâche car il s'agit d'un raccourci commun pour CmdLine@2.
+  # exécute l'utilitaire node-sass
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
   displayName: 'Compile Sass assets'
 
 - task: gulp@1
   displayName: 'Run gulp tasks'
-
+  
+  # écrit des informations de génération dans un fichier texte
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
   workingDirectory: $(wwwrootDir)

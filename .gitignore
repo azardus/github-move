@@ -39,7 +39,7 @@ Generated\ Files/
 [Bb]uild[Ll]og.*
 
 # NUNIT
-*.VisualState.xml
+#*.VisualState.xml
 #TestResult.xml
 
 # Build Results of an ATL Project

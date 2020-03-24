@@ -2,8 +2,11 @@
 # Installation de sonarClould pour faire des test de couverture de code:
 https://sonarclould.io
 
-Suppression du repertoire testResults et des fichier de coverage du '.gitignore'
-
+Suppression :
+    1- Du repertoire testResults et des fichier de coverage du '.gitignore'
+    2- # Visual Studio code coverage results
+        #*.coverage
+        
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

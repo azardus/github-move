@@ -1,4 +1,7 @@
 
+# Installation de sonarClould pour faire des test de couverture de code:
+https://sonarclould.io
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

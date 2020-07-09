@@ -20,6 +20,10 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+    
+- task: AssembyInfoReader@2
+  inputs:
+    searchPattern: '**\AssemblyInfo.cs'
 
 - task: VSBuild@1
   inputs:
@@ -32,3 +36,4 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    
